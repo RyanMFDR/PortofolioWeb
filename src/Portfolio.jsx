@@ -14,11 +14,16 @@ import {
   ExternalLink,
   ChevronDown,
 } from "lucide-react";
+import { projectsData } from "./data/projects";
+import { skillsData } from "./data/skills";
+import { achievementsData } from "./data/achievements";
+import { workExperienceData, organizationData } from "./data/Experience";
 import fotoDiri from "./assets/fotodiri.JPG";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +35,11 @@ const Portfolio = () => {
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -42,12 +52,15 @@ const Portfolio = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold text-[#1A1A40]">RyanMFDR</div>
-            <div className="hidden md:flex space-x-8">
+            <div className="text-xl sm:text-2xl font-bold text-[#1A1A40]">
+              RyanMFDR
+            </div>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-6 lg:space-x-8">
               {[
-                "Hero",
+                "Home",
                 "About",
                 "Experience",
                 "Projects",
@@ -68,7 +81,7 @@ const Portfolio = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Home Section */}
       <section
         id="hero"
         className="min-h-screen flex items-center justify-center px-6"
@@ -131,7 +144,7 @@ const Portfolio = () => {
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-            About Me
+            Get To Know Me!
           </h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
@@ -195,24 +208,20 @@ const Portfolio = () => {
                 Work Experience
               </h3>
               <div className="space-y-6">
-                <div className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <h4 className="text-xl font-bold text-gray-800">
-                    Class Manager Human Resource Bootcamp
-                  </h4>
-                  <p className="text-gray-500">Dibimbing • 2025 - Present</p>
-                  <p className="mt-2 text-gray-600">
-                    Led a cohort of 36 students in a Human Resource bootcamp,
-                    ensuring smooth coordination and active engagement
-                    throughout the program
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <h4 className="text-xl font-bold text-gray-800">
-                    Practicum Assistant for Algorithms and Data Structures
-                  </h4>
-                  <p className="text-gray-500">FILKOM UB • 2024 - 2024</p>
-                  <p className="mt-2 text-gray-600">Decription</p>
-                </div>
+                {workExperienceData.map((exp, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <h4 className="text-xl font-bold text-gray-800">
+                      {exp.title}
+                    </h4>
+                    <p className="text-gray-500">
+                      {exp.company} • {exp.period}
+                    </p>
+                    <p className="mt-2 text-gray-600">{exp.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div>
@@ -221,20 +230,20 @@ const Portfolio = () => {
                 Organizations
               </h3>
               <div className="space-y-6">
-                <div className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <h4 className="text-xl font-bold text-gray-800">
-                    Vice President
-                  </h4>
-                  <p className="text-gray-500">BEM FILKOM UB • 2024 - 2024</p>
-                  <p className="mt-2 text-gray-600">Description.</p>
-                </div>
-                <div className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <h4 className="text-xl font-bold text-gray-800">
-                    Human Resource Development Staff
-                  </h4>
-                  <p className="text-gray-500">BEM FILKOM UB • 2023 - 2023</p>
-                  <p className="mt-2 text-gray-600">Description</p>
-                </div>
+                {organizationData.map((org, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <h4 className="text-xl font-bold text-gray-800">
+                      {org.title}
+                    </h4>
+                    <p className="text-gray-500">
+                      {org.organization} • {org.period}
+                    </p>
+                    <p className="mt-2 text-gray-600">{org.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -248,38 +257,52 @@ const Portfolio = () => {
             Featured Projects
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((project) => (
+            {projectsData.map((project, index) => (
               <div
-                key={project}
+                key={index}
                 className="bg-white rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl"
               >
-                <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                  <Code size={48} className="text-gray-600" />
-                </div>
+                <div
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${project.imageUrl})` }}
+                ></div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 text-gray-800">
-                    Project {project}
+                    {project.name}
                   </h3>
-                  <p className="text-gray-600 mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt.
-                  </p>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
                   <div className="flex justify-between items-center">
-                    <div className="flex space-x-2">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-medium">
-                        React
-                      </span>
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-medium">
-                        Node.js
-                      </span>
+                    <div className="flex space-x-2 flex-wrap gap-1">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                     <div className="flex space-x-2">
-                      <button className="p-2 hover:bg-gray-100 rounded transition-colors duration-200">
-                        <Github size={16} className="text-gray-600" />
-                      </button>
-                      <button className="p-2 hover:bg-gray-100 rounded transition-colors duration-200">
-                        <ExternalLink size={16} className="text-gray-600" />
-                      </button>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 hover:bg-gray-100 rounded transition-colors duration-200"
+                        >
+                          <Github size={16} className="text-gray-600" />
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 hover:bg-gray-100 rounded transition-colors duration-200"
+                        >
+                          <ExternalLink size={16} className="text-gray-600" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -299,11 +322,7 @@ const Portfolio = () => {
             Skills & Technologies
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { name: "Datascience", icon: "⚛️" },
-              { name: "Javascript", icon: "🟨" },
-              { name: "ReactJS", icon: "🔷" },
-            ].map((skill, index) => (
+            {skillsData.map((skill, index) => (
               <div
                 key={index}
                 className="bg-white p-6 rounded-xl text-center shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200 hover:transform hover:scale-105"
@@ -325,23 +344,7 @@ const Portfolio = () => {
             Achievements
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Award",
-                year: "2023",
-                description: "Description",
-              },
-              {
-                title: "Award",
-                year: "2022",
-                description: "Decription",
-              },
-              {
-                title: "Award",
-                year: "2021",
-                description: "Description",
-              },
-            ].map((achievement, index) => (
+            {achievementsData.map((achievement, index) => (
               <div
                 key={index}
                 className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow duration-300 shadow-md"
@@ -372,7 +375,7 @@ const Portfolio = () => {
           </p>
           <div className="flex justify-center space-x-8 mb-12">
             <a
-              href="#"
+              href="https://www.linkedin.com/in/ryanmfdr/"
               className="flex flex-col items-center space-y-2 hover:text-gray-600 transition-colors duration-300"
             >
               <div className="p-4 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-300 shadow-md">
@@ -381,7 +384,7 @@ const Portfolio = () => {
               <span className="text-gray-700 font-medium">LinkedIn</span>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/ryanmfdr/"
               className="flex flex-col items-center space-y-2 hover:text-gray-600 transition-colors duration-300"
             >
               <div className="p-4 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-300 shadow-md">
@@ -390,7 +393,7 @@ const Portfolio = () => {
               <span className="text-gray-700 font-medium">Instagram</span>
             </a>
             <a
-              href="#"
+              href="https://mail.google.com/mail/?view=cm&to=ryanmfdr@gmail.com"
               className="flex flex-col items-center space-y-2 hover:text-gray-600 transition-colors duration-300"
             >
               <div className="p-4 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-300 shadow-md">
@@ -413,8 +416,9 @@ const Portfolio = () => {
               </span>
             </div>
             <p className="text-gray-600">
-              Currently looking for exciting frontend or full-stack developer
-              positions. Open to both remote and hybrid work arrangements.
+              Currently looking for exciting data scientist, machine learning or
+              full-stack developer positions. Open to both remote and hybrid
+              work arrangements.
             </p>
           </div>
         </div>
