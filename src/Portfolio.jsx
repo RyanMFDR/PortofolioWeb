@@ -17,7 +17,7 @@ import {
 import { projectsData } from "./data/projects";
 import { skillsData } from "./data/skills";
 import { achievementsData } from "./data/achievements";
-import { workExperienceData, organizationData } from "./data/Experience";
+import { workExperienceData, organizationData } from "./data/experience";
 import fotoDiri from "./assets/fotodiri.JPG";
 
 const Portfolio = () => {
