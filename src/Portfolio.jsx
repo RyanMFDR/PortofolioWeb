@@ -8,10 +8,8 @@ import {
   MapPin,
   Calendar,
   Award,
-  Code,
   Briefcase,
   User,
-  Star,
   ExternalLink,
   ChevronDown,
 } from "lucide-react";
@@ -19,7 +17,7 @@ import { projectsData } from "./data/projects";
 import { skillsData } from "./data/skills";
 import { achievementsData } from "./data/achievements";
 import { workExperienceData, organizationData } from "./data/experience";
-import fotoDiri from "./assets/fotodiri.JPG";
+import fotoDiri from "./assets/fotodiri_nobg.png";
 
 // Animation variants
 const fadeInUp = {
@@ -104,7 +102,7 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 text-[#1A1A40]">
-      {/* Navigation */}
+      {/*Navigation*/}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled
@@ -117,7 +115,7 @@ const Portfolio = () => {
             <div className="text-xl sm:text-2xl font-bold text-[#1A1A40]">
               RyanMFDR
             </div>
-            {/* Desktop Navigation */}
+            {/*Desktop Navigation*/}
             <div className="hidden md:flex space-x-6 lg:space-x-8">
               {[
                 "Home",
@@ -141,13 +139,13 @@ const Portfolio = () => {
         </div>
       </nav>
 
-      {/* Home Section */}
+      {/*Home Section*/}
       <section
         id="hero"
         className="min-h-screen flex items-center justify-center px-6"
       >
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          {/* Animated Left Side */}
+          {/*Left Side*/}
           <motion.div
             className="space-y-6"
             variants={slideInLeft}
@@ -164,8 +162,8 @@ const Portfolio = () => {
                 Data Scientist & Full Stack Developer
               </p>
               <p className="text-lg text-gray-500 max-w-lg">
-                Passionate About AI & People Development, Undergraduate
-                Informatics Engineering Student
+                Passionate About Tech Development, Undergraduate Informatics
+                Engineering Student
               </p>
             </motion.div>
             <motion.div className="flex space-x-4" variants={fadeInUp}>
@@ -184,22 +182,18 @@ const Portfolio = () => {
             </motion.div>
           </motion.div>
 
-          {/* Animated Profile Image */}
+          {/*Right Side/Profile Image*/}
           <motion.div
-            className="flex justify-center"
+            className="flex justify-center items-center h-full"
             variants={slideInRight}
             {...useScrollAnimation()}
           >
-            <div className="relative group">
-              <div className="w-80 h-80 bg-gradient-to-br from-[#1A1A40] to-blue-950 rounded-full shadow-2xl"></div>
-              <div className="absolute inset-4 rounded-full overflow-hidden shadow-inner">
-                <img
-                  src={fotoDiri}
-                  alt="Ryan Profile"
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <div className="absolute inset-4 rounded-full bg-gradient-to-t from-[#1A1A40]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative w-72 h-96 md:w-80 md:h-[420px]">
+              <img
+                src={fotoDiri}
+                alt="Ryan Profile"
+                className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-[#1A1A40] transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
           </motion.div>
         </div>
@@ -213,7 +207,7 @@ const Portfolio = () => {
         </motion.div>
       </section>
 
-      {/* About Section */}
+      {/*About Section*/}
       <section
         id="about"
         className="py-20 px-6 bg-gradient-to-t from-gray-100 to-white border-t border-gray-100"
@@ -232,7 +226,7 @@ const Portfolio = () => {
             variants={staggerContainer}
             {...useScrollAnimation()}
           >
-            {/* Left Column: About Text + Info */}
+            {/*Left Column: About Text + Info*/}
             <motion.div className="space-y-6" variants={slideInLeft}>
               <p className="text-lg text-gray-600 leading-relaxed">
                 A proactive Informatics Engineering student with a strong
@@ -247,7 +241,7 @@ const Portfolio = () => {
                 <div className="flex items-center space-x-3">
                   <MapPin className="text-gray-600" size={20} />
                   <span className="text-gray-700">
-                    Malang, East Java, Indonesia
+                    Bogor, West Java, Indonesia
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -257,7 +251,7 @@ const Portfolio = () => {
               </div>
             </motion.div>
 
-            {/* Right Column: Stats Cards */}
+            {/*Right Column: Stats Cards */}
             <motion.div
               className="grid grid-cols-2 gap-6"
               variants={staggerContainer}
@@ -285,7 +279,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
+      {/*Experience Section*/}
       <section
         id="experience"
         className="py-20 px-6 bg-white border-t border-gray-100"
@@ -304,7 +298,7 @@ const Portfolio = () => {
             variants={staggerContainer}
             {...useScrollAnimation()}
           >
-            {/* Work Experience Column */}
+            {/*Work Experience Column*/}
             <motion.div variants={slideInLeft}>
               <h3 className="text-2xl font-bold mb-6 flex items-center text-gray-800">
                 <Briefcase className="mr-3 text-gray-600" />
@@ -329,7 +323,7 @@ const Portfolio = () => {
               </div>
             </motion.div>
 
-            {/* Organization Experience Column */}
+            {/*Organization Experience Column*/}
             <motion.div variants={slideInRight}>
               <h3 className="text-2xl font-bold mb-6 flex items-center text-gray-800">
                 <User className="mr-3 text-gray-600" />
@@ -357,7 +351,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/*Projects Section*/}
       <section id="projects" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -429,7 +423,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/*Skills Section*/}
       <section
         id="skills"
         className="py-20 px-6 bg-white border-t border-gray-100"
@@ -464,7 +458,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Achievement Section */}
+      {/*Achievement Section*/}
       <section id="achievement" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -500,7 +494,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Connect Section */}
+      {/*Connect Section*/}
       <section id="connect" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
@@ -558,7 +552,7 @@ const Portfolio = () => {
             ))}
           </motion.div>
 
-          {/* Current Status */}
+          {/*Current Status*/}
           <div className="bg-gray-50 p-8 rounded-xl max-w-2xl mx-auto shadow-md">
             <h3 className="text-2xl font-bold mb-4 flex items-center justify-center text-gray-800">
               <Calendar className="mr-3 text-green-500" />
@@ -579,7 +573,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/*Footer*/}
       <footer className="py-8 px-6 bg-gray-800 text-center">
         <p className="text-gray-300">
           © 2025 Ryan. Built with React & Tailwind CSS.
