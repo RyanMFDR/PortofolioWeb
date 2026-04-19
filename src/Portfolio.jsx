@@ -230,8 +230,7 @@ const Portfolio = () => {
             <motion.div className="space-y-6" variants={slideInLeft}>
               <p className="text-lg text-gray-600 leading-relaxed">
                 A proactive Informatics Engineering student with a strong
-                interest in Data Science, Full Stack, and Human Resource
-                Development Intelligence. Experienced in organizational
+                interest in Data Science & Full Stack. Experienced in organizational
                 leadership, actively contributing to both academic competitions
                 and student organizations. Passionate about integrating
                 technology with people development to create innovative
@@ -565,9 +564,8 @@ const Portfolio = () => {
               </span>
             </div>
             <p className="text-gray-600">
-              Currently looking for exciting data scientist, machine learning or
-              full-stack developer positions. Open to both remote and hybrid
-              work arrangements.
+              Currently participating Apple Developer Program at Bali. Open to both remote and hybrid
+              work arrangements near Kuta.
             </p>
           </div>
         </div>
